@@ -1,0 +1,236 @@
+{
+    "fileMatch": ["polymer.json"],
+    "schema": {
+        "type": "object",
+        "properties": {
+            "root":{
+                "type": "string",
+                "description": "Specify the path to the root project folder."
+            },
+            "entrypoint": {
+                "type":"string",
+                "description": "Specify the file that imports the app shell."
+            },
+            "shell": {
+                "type":"string",
+                "description": "Specify the app shell."
+            },
+            "fragments":{
+                "type":"array",
+                "items": {
+                    "type":"string"
+                },
+                "description": "Specify your project's dynamic dependencies."
+            },
+            "sources":{
+                "type":"array",
+                "items": {
+                    "type":"string"
+                },
+                "description": "Specify your app's source files and folders."
+            },
+            "extraDependencies":{
+                "type":"array",
+                "items": {
+                    "type":"string"
+                },
+                "description": "Specify undiscoverable dependencies that won't be bundled."
+            },
+            "autoBasePath": {
+                "type":"boolean",
+                "description": "Set the base path for each build to its name."
+            },
+            "lint":{
+                "type":"object",
+                "description": " Configure lint warnings.",
+                "properties": {
+                    "rules":{
+                        "type": "array",
+                        "description": "Specify the rules for lint.",
+                        "items": {
+                            "type":"string",
+                            "enum": ["polymer-3", "polymer-2", "polymer-2-hybrid", "polymer-1", 
+                                     "content-selector-to-slotted", "deprecated-css-custom-property-syntax",
+                                     "deprecated-shadow-dom-selectors", "dom-module-invalid-attrs", "style-into-template",
+                                     "undefined-elements", "validate-element-name", "behaviors-spelling", 
+                                     "call-super-in-callbacks", "content-to-slot-declarations", "content-to-slot-usages",
+                                     "custom-style-extension", "create-element-extension", "databinding-calls-must-be-functions",
+                                     "databind-with-unknown-property", "dom-calls-to-native", "element-before-dom-module", 
+                                     "root-selector-to-html", "set-unknown-attribute", "unbalanced-polymer-delimiters", 
+                                     "iron-flex-layout-classes", "iron-flex-layout-import", "iron-form-v1-to-v2", "paper-toolbar-v1-to-v2"]
+                        }
+                    },
+                    "ignoreWarnings": {
+                        "type":"array",
+                        "description": "Specify rules to ignore warning from.",
+                        "items": {
+                            "type":"array",
+                            "enum": ["polymer-3", "polymer-2", "polymer-2-hybrid", "polymer-1", 
+                                "content-selector-to-slotted", "deprecated-css-custom-property-syntax",
+                                "deprecated-shadow-dom-selectors", "dom-module-invalid-attrs", "style-into-template",
+                                "undefined-elements", "validate-element-name", "behaviors-spelling", 
+                                "call-super-in-callbacks", "content-to-slot-declarations", "content-to-slot-usages",
+                                "custom-style-extension", "create-element-extension", "databinding-calls-must-be-functions",
+                                "databind-with-unknown-property", "dom-calls-to-native", "element-before-dom-module", 
+                                "root-selector-to-html", "set-unknown-attribute", "unbalanced-polymer-delimiters", 
+                                "iron-flex-layout-classes", "iron-flex-layout-import", "iron-form-v1-to-v2", "paper-toolbar-v1-to-v2"]
+                        }
+                    }
+                }
+            },
+            "npm":{
+                "type":"boolean",
+                "description": "Specify whether to use the node_modules folder as the componentDir option."
+            },
+            "componentDir":{
+                "type":"string",
+                "description": "Specify the folder in which web components are located."
+            },
+            "moduleResolution":{
+                "type":"string",
+                "enum": ["none", "node"],
+                "description": "Use Node.js-style module resolution to convert package names to paths."
+            },
+            "builds": {
+                "type":"array",
+                "description": "Configure one or more builds for your project.",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "preset": {
+                            "type": "string",
+                            "enum": ["es5-bundled", "es6-bundled", "es6-unbundled"]
+                        },
+                        "name": {
+                            "type":"string",
+                            "description": "An optional name for your build. If multiple builds are defined, the name property is required."
+                        },
+                        "basePath": {
+                            "type": ["boolean", "string"],
+                            "description": "Update the entrypoint's <base> tag to support serving this build from a non-root path"
+                        },
+                        "browserCapabilities": {
+                            "type": "array",
+                            "description": "Denotes the capabilities required for a browser to consume this build. ",
+                            "items": {
+                                "type": "string",
+                                "enum": ["es2015", "push", "serviceworker"]
+                            }
+                        },
+                        "addServiceWorker": {
+                            "type":"boolean",
+                            "description": "If true, generate a service worker for your application."
+                        },
+                        "addPushManifest": {
+                            "type":"boolean",
+                            "description": "If true, generate an HTTP/2 Push Manifest for your application."
+                        },
+                        "swPrecacheConfig": {
+                            "type": "string",
+                            "description": "An optional configuration file for the generated service worker. Defaults to sw-precache-config.js."
+                        },
+                        "insertPrefetchLinks": {
+                            "type":"boolean",
+                            "description": "If true, insert prefetch link elements into your fragments so that all dependencies are prefetched immediately."
+                        },
+                        "bundle": {
+                            "type":"object",
+                            "description": "Set bundle configuration",
+                            "properties": {
+                                "exclude": {
+                                    "type":"array",
+                                    "description": "A list of paths of files and/or folders that should not be inlined.",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                },
+                                "inlineCss": {
+                                    "type":"boolean",
+                                    "description": " If true, inline external CSS file contents into <style> tags."
+                                },
+                                "inlineScripts": {
+                                    "type":"boolean",
+                                    "description": "If true, inline external Javascript file contents into <script> tags."
+                                },
+                                "rewriteUrlsInTemplates": {
+                                    "type":"boolean",
+                                    "description": "If true, rewrite URLs in element attributes and style tags inside templates when inlining html."
+                                },
+                                "sourcemaps": {
+                                    "type":"boolean",
+                                    "description": "Create identity source maps for inline scripts."
+                                },
+                                "stripComments": {
+                                    "type":"boolean",
+                                    "description": "Remove all comments except those tagged @license, or starting with <!--! or <!--#."
+                                }                     
+                            }
+                        },
+                        "html":{
+                            "type": "object",
+                            "description": "An object containing a configuration option for HTML",
+                            "properties": {
+                                "minify":{
+                                    "type": ["boolean", "object"],
+                                    "properties": {
+                                        "exclude": {
+                                            "type":"array",
+                                            "items": {
+                                                "type":"string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "css":{
+                            "type": "object",
+                            "description": "An object containing a configuration option for HTML",
+                            "properties": {
+                                "minify":{
+                                    "type": ["boolean", "object"],
+                                    "properties": {
+                                        "exclude": {
+                                            "type":"array",
+                                            "items": {
+                                                "type":"string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "js":{
+                            "type": "object",
+                            "description": "An object containing a configuration option for HTML",
+                            "properties": {
+                                "minify":{
+                                    "type": ["boolean", "object"],
+                                    "properties": {
+                                        "exclude": {
+                                            "type":"array",
+                                            "items": {
+                                                "type":"string"
+                                            }
+                                        }
+                                    }
+                                },
+                                "compile":{
+                                    "type": ["boolean", "object"],
+                                    "properties": {
+                                        "exclude": {
+                                            "type":"array",
+                                            "items": {
+                                                "type":"string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }   
+                    }
+                }
+            }
+        }
+    }
+}
