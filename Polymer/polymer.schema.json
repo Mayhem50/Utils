@@ -2,6 +2,7 @@
     "fileMatch": ["polymer.json"],
     "schema": {
         "type": "object",
+        "required": ["shell"],
         "properties": {
             "root":{
                 "type": "string",
